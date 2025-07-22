@@ -1,47 +1,73 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=19853067&assignment_repo_type=AssignmentRepo)
-# MongoDB Fundamentals Assignment
+MongoDB Sample Scripts This repository contains two Node.js scripts for interacting with a local MongoDB instance:
 
-This assignment focuses on learning MongoDB fundamentals including setup, CRUD operations, advanced queries, aggregation pipelines, and indexing.
+insert_books.js: Populates a MongoDB database with sample book data.
 
-## Assignment Overview
+queries.js: Demonstrates various MongoDB queries, aggregations, and indexing operations on the populated data.
 
-You will:
-1. Set up a MongoDB database
-2. Perform basic CRUD operations
-3. Write advanced queries with filtering, projection, and sorting
-4. Create aggregation pipelines for data analysis
-5. Implement indexing for performance optimization
+Prerequisites Before running these scripts, ensure you have the following installed on your machine:
 
-## Getting Started
+MongoDB Community Server: The database server itself.
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Install MongoDB locally or set up a MongoDB Atlas account
-4. Run the provided `insert_books.js` script to populate your database
-5. Complete the tasks in the assignment document
+Download MongoDB Community Server
 
-## Files Included
+Ensure the MongoDB service is running (you can check this in your system's Services manager on Windows, or via sudo systemctl status mongod on Linux, or brew services list on macOS if installed via Homebrew).
 
-- `Week1-Assignment.md`: Detailed assignment instructions
-- `insert_books.js`: Script to populate your MongoDB database with sample book data
+Node.js: A JavaScript runtime environment.
 
-## Requirements
+Download Node.js (LTS version recommended)
 
-- Node.js (v18 or higher)
-- MongoDB (local installation or Atlas account)
-- MongoDB Shell (mongosh) or MongoDB Compass
+Verify installation by running node -v in your terminal.
 
-## Submission
+npm (Node Package Manager): Comes bundled with Node.js.
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+Verify installation by running npm -v in your terminal.
 
-1. Complete all tasks in the assignment
-2. Add your `queries.js` file with all required MongoDB queries
-3. Include a screenshot of your MongoDB database
-4. Update the README.md with your specific setup instructions
+MongoDB for VS Code Extension (Optional but Recommended): For easily viewing and managing your MongoDB data directly within VS Code.
 
-## Resources
+Search for "MongoDB for VS Code" in the VS Code Extensions marketplace and install it.
 
-- [MongoDB Documentation](https://docs.mongodb.com/)
-- [MongoDB University](https://university.mongodb.com/)
-- [MongoDB Node.js Driver](https://mongodb.github.io/node-mongodb-native/) 
+Setup Create a Project Folder: Create a new, empty folder on your computer (e.g., mongodb_project).
+
+Save the Scripts: Save both insert_books.js and queries.js into this mongodb_project folder.
+
+Open Terminal/Command Prompt: Navigate your terminal or command prompt into the mongodb_project folder.
+
+cd path/to/your/mongodb_project
+
+(Replace path/to/your/mongodb_project with the actual path to your folder.)
+
+Install Node.js Dependencies: From within your mongodb_project folder, run the following command to install the MongoDB Node.js driver:
+
+npm install mongodb
+
+This will create a node_modules folder and a package-lock.json file in your project directory.
+
+How to Run the Scripts
+
+Run insert_books.js This script will connect to your local MongoDB instance (mongodb://localhost:27017), create a database named plp_bookstore (if it doesn't exist), create a collection named books (dropping it first if it contains existing documents), and then insert 12 sample book documents.
+To run it:
+
+node insert_books.js
+
+You should see output indicating successful connection, insertion count, and a list of the inserted books.
+
+Run queries.js This script will perform a series of MongoDB operations, including:
+Basic find queries (by genre, year, author).
+
+An updateOne operation to change a book's price.
+
+A deleteOne operation to remove a book.
+
+Advanced queries using $gt (greater than), projection, sorting (ascending/descending), and pagination (limit, skip).
+
+Aggregation pipelines to calculate average price by genre, find the author with the most books, and group books by publication decade.
+
+Indexing operations (createIndex) and demonstrating their performance using explain().
+
+To run it:
+
+node queries.js
+
+Observe the output in your terminal. It will show the results of each query, the changes made, and the execution statistics for the indexed queries.
+
+Note: If you encounter any issues, ensure your MongoDB server is running and that you have installed all prerequisites correctly.
